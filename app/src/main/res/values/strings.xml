@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">AndroidTD</string>
+    <string name="notification_title">Notification title</string>
+
+    <string name="notification_channel_id" translatable="false">channel</string>
+    <string name="notification_channel_name" translatable="true">channel 1</string>
+
+    <string name="notification_text">Notification happens</string>
+
+    <string name="notification_description">Notification Description</string>
+</resources>
