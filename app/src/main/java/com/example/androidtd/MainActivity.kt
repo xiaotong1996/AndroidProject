@@ -14,6 +14,8 @@ import androidx.core.app.AlarmManagerCompat
 import androidx.core.content.ContextCompat
 import com.example.androidtd.receiver.AlarmReceiver
 import com.example.androidtd.util.cancelNotifications
+import com.example.androidtd.util.sendNotification
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.header_fragment.*
 
 class MainActivity : AppCompatActivity() {
@@ -25,9 +27,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         header_avatar.setOnClickListener{onClickListerner()}
+        add_task_btn.setOnClickListener { onClickAddListener() }
 
         val headText: TextView = findViewById(R.id.header_text)
         headText.text="Hello World"
+
 
         createChannel(
             getString(R.string.notification_channel_id),
@@ -46,11 +50,17 @@ class MainActivity : AppCompatActivity() {
                 application,
                 NotificationManager::class.java
             ) as NotificationManager
-        notificationManager.cancelNotifications()
+        notificationManager.sendNotification("hello", applicationContext)
 
 
         startActivity(intent)
 
+    }
+
+    private fun onClickAddListener()
+    {
+        var intent = Intent(applicationContext, TaskFormActivity::class.java)
+        startActivity(intent)
     }
 
 

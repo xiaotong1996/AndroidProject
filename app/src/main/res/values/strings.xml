@@ -8,4 +8,5 @@
     <string name="notification_text">Notification happens</string>
 
     <string name="notification_description">Notification Description</string>
+    <string name="add_task_btn"></string>
 </resources>
