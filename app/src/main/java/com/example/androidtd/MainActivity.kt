@@ -14,6 +14,7 @@ import androidx.core.app.AlarmManagerCompat
 import androidx.core.content.ContextCompat
 import com.example.androidtd.receiver.AlarmReceiver
 import com.example.androidtd.util.cancelNotifications
+import com.example.androidtd.util.sendNotification
 import kotlinx.android.synthetic.main.header_fragment.*
 
 class MainActivity : AppCompatActivity() {
@@ -38,16 +39,20 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun onClickListerner(){
-        val intent = Intent(applicationContext, UserInfoActivity::class.java)
-
 
         val notificationManager =
             ContextCompat.getSystemService(
                 application,
                 NotificationManager::class.java
             ) as NotificationManager
-        notificationManager.cancelNotifications()
 
+        notificationManager.sendNotification("tstjkgjkhjk",applicationContext)
+        //notificationManager.cancelNotifications()
+
+
+
+
+        val intent = Intent(applicationContext, UserInfoActivity::class.java)
 
         startActivity(intent)
 
