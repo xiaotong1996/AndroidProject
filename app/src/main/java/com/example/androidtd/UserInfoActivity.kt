@@ -7,6 +7,7 @@ import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -83,8 +84,10 @@ class UserInfoActivity : AppCompatActivity() {
         val image = data?.extras?.get("data") as? Bitmap
         val imageBody = imageToBody(image)
 
+
         // Afficher l'image
-        Glide.with(this).load(imageBody).into(avatar_image)
+        Glide.with(this).load(image).into(avatar_image)
+
         // Plus tard : Envoie de l'avatar au serveur
         if (imageBody != null) {
             coroutineScope.launch {

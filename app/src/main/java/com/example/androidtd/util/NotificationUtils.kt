@@ -7,6 +7,7 @@ import android.content.Intent
 import androidx.core.app.NotificationCompat
 import com.example.androidtd.MainActivity
 import com.example.androidtd.R
+import com.example.androidtd.UserInfoActivity
 
 private val NOTIFICATION_ID = 0
 private val REQUEST_CODE = 0

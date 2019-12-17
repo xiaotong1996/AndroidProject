@@ -1,8 +1,7 @@
 package com.example.androidtd
 
-import android.content.Intent
+
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,12 +34,20 @@ class HeaderFragment : Fragment(){
 
     override fun onResume() {
         super.onResume()
-        Glide.with(this).load("https://goo.gl/gEgYUd").apply(RequestOptions.bitmapTransform( CircleCrop())).into(header_avatar)
-
+        //Glide.with(this).load("https://goo.gl/gEgYUd").apply(RequestOptions.bitmapTransform( CircleCrop())).into(header_avatar)
+        var avatarUrl: String=""
         coroutineScope.launch {
             var tem=Api.userService.getInfo()
             header_text.text = (tem.body()?.firstName ?: "") +" "+ tem.body()?.lastName
+            avatarUrl= tem.body()?.avatar ?:""
+
+            if(avatarUrl.equals(""))
+                context?.let { Glide.with(it).load("https://goo.gl/gEgYUd").apply(RequestOptions.bitmapTransform( CircleCrop())).into(header_avatar) }
+            else
+                context?.let { Glide.with(it).load(avatarUrl).apply(RequestOptions.bitmapTransform( CircleCrop())).into(header_avatar) }
+
         }
+
 
     }
 
