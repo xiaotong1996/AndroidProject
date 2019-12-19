@@ -29,7 +29,8 @@ class TaskFormActivity : AppCompatActivity() {
             val due_date = datePicker.dayOfMonth.toString() + "/" + (datePicker.month+1).toString()
             Log.i("qqqqqqqqqq", due_date)
             coroutineScope.launch {
-                Api.tasksService.createTask(Task("id_$title", title, description))
+                Api.tasksService.createTask(Task("id_$title", title, description, due_date))
+
             }
             startActivity(createMainActivity)
 

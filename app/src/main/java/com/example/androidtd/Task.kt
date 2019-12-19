@@ -24,7 +24,7 @@ data class Task(
     @Json(name = "title")
     val title: String,
     @Json(name = "description")
-    val description: String
-//    @Json(name = "due_date")
-//    val due_date: String?
+    val description: String,
+    @Json(name = "due_date")
+    val due_date: String?
 ) : Parcelable
