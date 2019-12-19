@@ -19,6 +19,8 @@ class TaskViewHolder(itemView: View, myAdapter: TasksAdapter) : RecyclerView.Vie
         itemText.text=task.title
         val itemDescription=itemView.findViewById<TextView>(R.id.task_description)
         itemDescription.text=task.description
+//        val duetime = itemView.findViewById<TextView>(R.id.due_time)
+//        duetime.text = "Date:  "+task.due_date
     }
 
 

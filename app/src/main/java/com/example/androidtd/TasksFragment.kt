@@ -35,7 +35,7 @@ class TasksFragment : Fragment(){
     private val coroutineScope = MainScope()
 
 
-    private val tasksViewModel by lazy{
+    private val taskViewModel by lazy{
         ViewModelProviders.of(this).get(TasksViewModel::class.java)
     }
 
@@ -83,7 +83,7 @@ class TasksFragment : Fragment(){
         coroutineScope.launch {
             Api.tasksService.getTasks()
         }
-        //tasksViewModel.loadTasks()
+        taskViewModel.loadTasks(this)
         super.onResume()
     }
 

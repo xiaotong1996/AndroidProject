@@ -17,7 +17,7 @@ class TasksRepository {
         return tasks
     }
 
-    private suspend fun loadTasks(): List<Task>? {
+     suspend fun loadTasks(): List<Task>? {
         val tasksResponse = tasksService.getTasks()
         Log.e("loadTasks", tasksResponse.body().toString())
         return if (tasksResponse.isSuccessful) tasksResponse.body() else null
