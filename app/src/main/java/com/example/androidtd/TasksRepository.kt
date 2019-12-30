@@ -3,12 +3,13 @@ package com.example.androidtd
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.androidtd.Data.Task
 import com.example.androidtd.network.Api
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 
 class TasksRepository {
-    private val tasksService = Api.tasksService
+    private val tasksService = Api.INSTANCE.tasksService
     private val coroutineScope = MainScope()
 
     fun getTasks(): LiveData<List<Task>?> {

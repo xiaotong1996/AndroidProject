@@ -1,44 +1,51 @@
 package com.example.androidtd.util
 
-import android.app.NotificationManager
+import android.app.Activity
+import android.app.AlarmManager
 import android.app.PendingIntent
-import android.content.Context
 import android.content.Intent
-import androidx.core.app.NotificationCompat
-import com.example.androidtd.MainActivity
-import com.example.androidtd.R
-import com.example.androidtd.UserInfoActivity
+import java.util.*
 
-private val NOTIFICATION_ID = 0
-private val REQUEST_CODE = 0
-private val FLAGS = 0
+class NotificationUtils(timeInMilliSeconds: Long, activity: Activity) {
 
-fun NotificationManager.sendNotification(messageBody: String, applicationContext: Context) {
-    val contentIntent = Intent(applicationContext, MainActivity::class.java)
+    val alarmManager = activity.getSystemService(Activity.ALARM_SERVICE) as AlarmManager
+    val alarmIntent = Intent(activity.applicationContext, AlarmReceiver::class.java) // AlarmReceiver1 = broadcast receiver
 
-    val contentPendingIntent = PendingIntent.getActivity(
-        applicationContext,
-        NOTIFICATION_ID,
-        contentIntent,
-        PendingIntent.FLAG_UPDATE_CURRENT
-    )
+    val timeInMilliSeconds=timeInMilliSeconds
+    val activity=activity
 
 
-    val builder = NotificationCompat.Builder(
-        applicationContext,
-        applicationContext.getString(R.string.notification_channel_id)
-    )
-        .setSmallIcon(R.drawable.ic_launcher_background)
-        .setContentTitle(applicationContext.getString(R.string.notification_title))
-        .setContentText(messageBody)
+    fun putExtras(id:String,title : String,description: String,date : String,time:String){
+        alarmIntent.putExtra("in_ID",id)
+        alarmIntent.putExtra("in_title",title)
+        alarmIntent.putExtra("in_description",description)
+        alarmIntent.putExtra("in_date",date)
+        alarmIntent.putExtra("in_time",time)
 
-        .setContentIntent(contentPendingIntent)
-        .setAutoCancel(true)
+    }
+    fun setNotification() {
+
+        //------------  alarm settings start  -----------------//
+
+        if (timeInMilliSeconds > 0) {
 
 
-    notify(NOTIFICATION_ID,builder.build())
-}
 
-fun NotificationManager.cancelNotifications() {
-    cancelAll()
+            alarmIntent.putExtra("reason", "notification")
+            alarmIntent.putExtra("timestamp", timeInMilliSeconds)
+
+
+            val calendar = Calendar.getInstance()
+            calendar.timeInMillis = timeInMilliSeconds
+
+
+            val pendingIntent = PendingIntent.getBroadcast(activity, 0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT)
+            alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
+
+        }
+
+        //------------ end of alarm settings  -----------------//
+
+
+    }
 }

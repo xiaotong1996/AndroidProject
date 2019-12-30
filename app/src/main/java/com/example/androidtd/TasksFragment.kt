@@ -1,18 +1,16 @@
 package com.example.androidtd
 
 import android.os.Bundle
-import android.os.Debug
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.androidtd.Data.Task
 import com.example.androidtd.network.Api
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
@@ -81,7 +79,7 @@ class TasksFragment : Fragment(){
 
     override fun onResume() {
         coroutineScope.launch {
-            Api.tasksService.getTasks()
+            Api.INSTANCE.tasksService.getTasks()
         }
         taskViewModel.loadTasks(this)
         super.onResume()

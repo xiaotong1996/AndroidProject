@@ -1,9 +1,9 @@
 package com.example.androidtd
 
 import android.view.View
-import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.androidtd.Data.Task
 
 class TaskViewHolder(itemView: View, myAdapter: TasksAdapter) : RecyclerView.ViewHolder(itemView) {
 

@@ -1,6 +1,6 @@
 package com.example.androidtd.network
 
-import com.example.androidtd.Task
+import com.example.androidtd.Data.Task
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -14,7 +14,9 @@ interface TasksService {
     @POST("tasks")
     suspend fun createTask(@Body task: Task): Response<Task>
 
-
     @PATCH("tasks/{id}")
     suspend fun updateTask(@Body task: Task): Response<Task>
+
+    @PATCH("tasks/{id}/mark_as_done")
+    suspend fun markAsDoneTask(@Path("id") id: String): Response<Task>
 }

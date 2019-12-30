@@ -1,4 +1,4 @@
-package com.example.androidtd
+package com.example.androidtd.Data
 
 import android.os.Parcelable
 import com.squareup.moshi.Json

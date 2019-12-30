@@ -37,7 +37,7 @@ class HeaderFragment : Fragment(){
         //Glide.with(this).load("https://goo.gl/gEgYUd").apply(RequestOptions.bitmapTransform( CircleCrop())).into(header_avatar)
         var avatarUrl: String=""
         coroutineScope.launch {
-            var tem=Api.userService.getInfo()
+            var tem=Api.INSTANCE.userService.getInfo()
             header_text.text = (tem.body()?.firstName ?: "") +" "+ tem.body()?.lastName
             avatarUrl= tem.body()?.avatar ?:""
 

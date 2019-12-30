@@ -1,13 +1,10 @@
 package com.example.androidtd
 
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.example.androidtd.network.Api
+import com.example.androidtd.Data.Task
 import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.launch
 
 class TasksViewModel: ViewModel() {
     private val coroutineScope = MainScope()

@@ -1,12 +1,33 @@
 <resources>
     <string name="app_name">AndroidTD</string>
-    <string name="notification_title">Notification title</string>
+    <string name="notification_title">Ding</string>
 
     <string name="notification_channel_id" translatable="false">channel</string>
     <string name="notification_channel_name" translatable="true">channel 1</string>
+    <string name="notification_channel_description">description 1111111</string>
 
-    <string name="notification_text">Notification happens</string>
+    <string name="notification_text">You have a task to do!</string>
 
     <string name="notification_description">Notification Description</string>
     <string name="add_task_btn"></string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="button_login_text">Log in</string>
+    <string name="button_signup_text">Sign Up</string>
+    <string name="login_email_placeholders">Print your email</string>
+    <string name="login_password_placeholders">Enter your password</string>
+    <string name="signin_firstname_placeholders">First name</string>
+    <string name="signup_lastname_placeholders">Last name</string>
+    <string name="signup_email_placeholders">Email</string>
+    <string name="signup_password_placeholders">Password</string>
+    <string name="signup_password_confi_placeholders">Password Confirmation</string>
+    <string name="signup_button_text">Sign Up</string>
+    <string name="loginFragment_login_text">Login</string>
+    <string name="new_title_text">Title</string>
+    <string name="new_description_text">Description</string>
+    <string name="in_date_text">Click Button to set Date</string>
+    <string name="btn_date_text">SELECT DATE</string>
+    <string name="in_time_text">Click button to choose time</string>
+    <string name="btn_time_text">SELECT TIME</string>
 </resources>

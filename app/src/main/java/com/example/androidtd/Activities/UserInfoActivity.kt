@@ -1,4 +1,4 @@
-package com.example.androidtd
+package com.example.androidtd.Activities
 
 import android.Manifest
 import android.content.Intent
@@ -7,11 +7,11 @@ import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
+import com.example.androidtd.R
 import com.example.androidtd.network.Api
 import kotlinx.android.synthetic.main.activity_user_info.*
 import kotlinx.coroutines.MainScope
@@ -47,10 +47,14 @@ class UserInfoActivity : AppCompatActivity() {
                 // Show an explanation to the user *asynchronously* -- don't block
                 // this thread waiting for the user's response! After the user
                 // sees the explanation, try again to request the permission.
-                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), CAMERA_PERMISSION_CODE )
+                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA),
+                    CAMERA_PERMISSION_CODE
+                )
             } else {
                 // No explanation needed, we can request the permission.
-                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), CAMERA_PERMISSION_CODE )
+                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA),
+                    CAMERA_PERMISSION_CODE
+                )
                 // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
                 // app-defined int constant. The callback method gets the
                 // result of the request.
@@ -62,7 +66,9 @@ class UserInfoActivity : AppCompatActivity() {
 
     private fun openCamera() {
         val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        startActivityForResult(cameraIntent, CAMERA_REQUEST_CODE)
+        startActivityForResult(cameraIntent,
+            CAMERA_REQUEST_CODE
+        )
     }
 
     override fun onRequestPermissionsResult(
@@ -91,7 +97,7 @@ class UserInfoActivity : AppCompatActivity() {
         // Plus tard : Envoie de l'avatar au serveur
         if (imageBody != null) {
             coroutineScope.launch {
-                Api.userService.updateAvatar(imageBody)
+                Api.INSTANCE.userService.updateAvatar(imageBody)
             }
         }
     }
